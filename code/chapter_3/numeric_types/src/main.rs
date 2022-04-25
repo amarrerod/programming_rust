@@ -1,3 +1,4 @@
+mod aliases_and_strs;
 mod floating;
 mod overflow;
 mod sequences;
@@ -19,4 +20,6 @@ fn main() {
 
     sequences::arrays();
     sequences::vectors();
+    aliases_and_strs::decode(&aliases_and_strs::Bytes::new());
+    aliases_and_strs::print_str("Hola Mundo, Rust!");
 }
