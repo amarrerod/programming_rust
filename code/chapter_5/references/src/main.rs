@@ -1,6 +1,7 @@
 mod lifetimes;
 mod renaissance;
 mod safety;
+mod sharing_vs_mutation;
 use lifetimes::{test_string_table, testing_lifetimes};
 use renaissance::{show_work, sort_work, Table};
 use safety::{g, smallest, S};
@@ -73,4 +74,5 @@ fn main() {
     }
     testing_lifetimes();
     test_string_table();
+    sharing_vs_mutation::move_vector();
 }
