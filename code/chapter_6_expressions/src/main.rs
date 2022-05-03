@@ -29,8 +29,6 @@ fn main() {
         .take(10)
         .collect();
     println!("Initial vector is: {:?}", integers);
-    let start: usize = 0;
-    let end: usize = integers.len() - 1;
-    quicksort::quicksort(&mut integers, &start, &end);
+    quicksort::quicksort(&mut integers);
     println!("Sorted vector is: {:?}", integers);
 }

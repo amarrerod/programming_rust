@@ -1,26 +1,39 @@
-fn partition<T: Ord + std::fmt::Debug>(slice: &mut [T], start: &usize, end: &usize) -> usize {
+fn partition<T: Ord + std::fmt::Debug + Clone>(slice: &mut [T], low: isize, high: isize) -> isize {
     println!("Partitioning slice: {:?}", slice);
-    let mut i = start - 1;
-    for j in *start..=(end - 1) {
-        let element: &T = &slice[j];
-        if *element < slice[*end] {
+    let pivot = high as usize;
+    let mut i = low - 1;
+    let mut j = high;
+    loop {
+        i += 1;
+        while slice[i as usize] < slice[pivot as usize] {
             i += 1;
-            slice.swap(i, j);
+        }
+        j -= 1;
+        while j >= 0 && slice[j as usize] > slice[pivot] {
+            j -= 1;
+        }
+        if i >= j {
+            break;
+        } else {
+            slice.swap(i as usize, j as usize);
         }
     }
-    i += 1;
-    slice.swap(i, *end);
-    println!("Partitioning result: {:?}", slice);
+    slice.swap(i as usize, pivot as usize);
     i
 }
 
-pub fn quicksort(slice: &mut [i32], start: &usize, end: &usize) {
-    println!("Running quicksort on vector: {:?}", slice);
-    if start < end {
-        let pivot: usize = partition::<i32>(slice, start, end);
-        quicksort(&mut slice[..pivot], start, &(pivot - 1));
-        quicksort(&mut slice[pivot + 1..], &(pivot + 1), end);
-    } else {
+fn __quicksort<T: Ord + std::fmt::Debug + Clone>(slice: &mut [T], low: isize, high: isize) {
+    if low < high {
+        let p = partition(slice, low, high);
+        __quicksort(slice, low, p - 1);
+        __quicksort(slice, p + 1, high);
+    }
+}
+
+pub fn quicksort(slice: &mut [i32]) {
+    let len = slice.len();
+    if len <= 0 {
         return;
     }
+    __quicksort(slice, 0, (len - 1) as isize);
 }
