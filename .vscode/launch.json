@@ -1,0 +1,15 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+        "type": "lldb",
+        "request": "launch",
+        "name": "Debug",
+        "program": "${workspaceRoot}/code/chapter_6_expressions/target/debug/chapter_6_expressions",
+        "args": [],
+        "cwd": "${workspaceRoot}/code/chapter_6_expressions/target/debug/",
+        "sourceLanguages": ["rust"]
+    }]
+}
