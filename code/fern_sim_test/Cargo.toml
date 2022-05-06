@@ -1,5 +1,5 @@
 [package]
-name = "fern_sim"
+name = "fern_sim_test"
 version = "0.1.0"
 authors = ["amarrerod <hola@gmail.com>"]
 edition = "2018"

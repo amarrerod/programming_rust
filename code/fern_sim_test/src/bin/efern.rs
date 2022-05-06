@@ -1,4 +1,4 @@
-use fern_sim::{run_simulation, Fern};
+use fern_sim_test::{run_simulation, Fern};
 
 fn main() {
     let mut fern = Fern {

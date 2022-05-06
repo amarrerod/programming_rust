@@ -1,4 +1,4 @@
-use fern_sim::Terrarium;
+use fern_sim_test::Terrarium;
 use std::time::Duration;
 
 #[test]
