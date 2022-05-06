@@ -1,8 +1,13 @@
 [package]
 name = "fern_sim"
 version = "0.1.0"
-authors = ["amarrerod <alemarrerodiaz@gmail.com>"]
+authors = ["amarrerod <hola@gmail.com>"]
 edition = "2018"
+license = "MIT"
+homepage = "https://github.com/"
+repository = "https://github.com"
+documentation = "https://github.com/"
+description = "Sample package from Programming Rust 2nd Edition"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
