@@ -1,11 +1,17 @@
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Point3d {
-    x: f32,
-    y: f32,
-    z: f32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
 }
 
-const ORIGIN: Point3d = Point3d {
+impl Point3d {
+    pub fn new(x: f32, y: f32, z: f32) -> Point3d {
+        Point3d { x, y, z }
+    }
+}
+
+pub const ORIGIN: Point3d = Point3d {
     x: 0.0,
     y: 0.0,
     z: 0.0,

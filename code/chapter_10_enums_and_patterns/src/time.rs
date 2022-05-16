@@ -35,3 +35,11 @@ pub enum RoughTime {
     JustNow,
     InTheFuture(TimeUnit, u32),
 }
+
+pub fn rough_time_to_english(rt: RoughTime) -> String {
+    match rt {
+        RoughTime::InThePast(units, count) => format!("{} {} ago", count, units.plural()),
+        RoughTime::JustNow => format!("just now"),
+        RoughTime::InTheFuture(units, count) => format!("{} {} from now", count, units.plural()),
+    }
+}

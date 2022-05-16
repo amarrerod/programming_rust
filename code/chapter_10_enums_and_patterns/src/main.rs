@@ -1,7 +1,10 @@
 mod binary_tree;
 mod ordering;
+mod patterns;
 mod shape;
 mod time;
+
+pub use shape::*;
 
 use binary_tree::*;
 
@@ -60,4 +63,44 @@ fn main() {
     let unit_sphere = shape::Shape::create_unit_sphere();
     println!("The Unit Sphere is: {:#?}", unit_sphere);
     create_tree();
+    patterns::number_of_rabbits(0);
+    patterns::number_of_rabbits(1);
+    patterns::number_of_rabbits(100);
+
+    let gre_calendar = patterns::calendar_type("gregorian").unwrap();
+    let chi_calendar = patterns::calendar_type("chinese").unwrap();
+    println!("The calendar is: {:?}", gre_calendar);
+    println!("The chi calendar is: {:?}", chi_calendar);
+
+    match patterns::calendar_type("none") {
+        None => println!("No calendar specified"),
+        _ => println!("There is a calendar specified"),
+    };
+
+    println!("{}", patterns::describe_point(0, 0));
+    println!("{}", patterns::describe_point(1, 0));
+    println!("{}", patterns::describe_point(0, 1));
+    println!("{}", patterns::describe_point(100, 011));
+    println!("{}", patterns::describe_point(-100, 011));
+
+    println!("{}", patterns::describe_point(110, -1110));
+
+    let point = shape::ORIGIN;
+    let other = shape::Point3d::new(0.0, 1.0, 2.0);
+    patterns::balloon_location(point);
+    patterns::balloon_location(other);
+    let names: [&str; 7] = [
+        "Leonard",
+        "Rajesh",
+        "Sheldon",
+        "Howard",
+        "Penny",
+        "Amy",
+        "Bernadette",
+    ];
+    patterns::greet_peopple(&names);
+    patterns::greet_peopple(&names[..0]);
+    patterns::greet_peopple(&names[..1]);
+    patterns::greet_peopple(&names[..2]);
+    patterns::greet_peopple(&names[..3]);
 }
