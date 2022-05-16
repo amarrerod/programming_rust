@@ -9,6 +9,10 @@ impl Point3d {
     pub fn new(x: f32, y: f32, z: f32) -> Point3d {
         Point3d { x, y, z }
     }
+
+    pub fn center(&self) -> &Point3d {
+        &self
+    }
 }
 
 pub const ORIGIN: Point3d = Point3d {

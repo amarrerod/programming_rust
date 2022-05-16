@@ -103,4 +103,6 @@ fn main() {
     patterns::greet_peopple(&names[..1]);
     patterns::greet_peopple(&names[..2]);
     patterns::greet_peopple(&names[..3]);
+
+    patterns::get_center(&Point3d::new(0.0, 10.0, 0.0));
 }

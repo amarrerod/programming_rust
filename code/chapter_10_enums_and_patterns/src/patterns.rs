@@ -65,3 +65,15 @@ pub fn greet_peopple(names: &[&str]) {
         [a, .., b] => println!("Hello, everyone from {} to {}", a, b),
     }
 }
+
+pub fn get_center(sphere: &shape::Point3d) {
+    match sphere.center() {
+        &shape::Point3d { x, y, z: 0.0 } => {
+            println!("This is the center: {}, {}", x, y);
+        }
+
+        &shape::Point3d { x, y, z } => {
+            println!("This is the center: {}, {}, {}", x, y, z);
+        }
+    }
+}
