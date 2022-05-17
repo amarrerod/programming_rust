@@ -77,3 +77,25 @@ pub fn get_center(sphere: &shape::Point3d) {
         }
     }
 }
+
+pub fn binding_pattern(sphere: &shape::Point3d) {
+    match sphere.center() {
+        point @ shape::Point3d { z: 0.0, .. } => {
+            shape::print_shape(&point);
+        }
+
+        &shape::Point3d { x, y, z } => {
+            println!("This is the center: {}, {}, {}", x, y, z);
+        }
+    }
+}
+
+pub fn match_string(s: &str) {
+    let next = match s.chars().next().unwrap() {
+        '0'..='9' => "Digit",
+        'a'..='z' | 'A'..='Z' => "Letter",
+        ' ' | '\t' | '\n' => "Delimiter",
+        _ => "Whatever",
+    };
+    println!("{}", next);
+}

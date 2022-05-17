@@ -15,6 +15,10 @@ impl Point3d {
     }
 }
 
+pub fn print_shape(p: &Point3d) {
+    println!("{:?}", p);
+}
+
 pub const ORIGIN: Point3d = Point3d {
     x: 0.0,
     y: 0.0,

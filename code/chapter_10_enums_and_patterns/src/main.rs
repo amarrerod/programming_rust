@@ -105,4 +105,13 @@ fn main() {
     patterns::greet_peopple(&names[..3]);
 
     patterns::get_center(&Point3d::new(0.0, 10.0, 0.0));
+    patterns::match_string("Hola");
+    patterns::match_string("10102");
+    patterns::match_string("\tHOLA");
+
+    patterns::binding_pattern(&Point3d::new(0.0, 10.0, 0.0));
+    patterns::binding_pattern(&Point3d::new(0.0, 10.0, 100.0));
+
+    let tree = binary_tree::create_tree_with_add();
+    println!("Printing tree from main: {:#?}", tree);
 }
