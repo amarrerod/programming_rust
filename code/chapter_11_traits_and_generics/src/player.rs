@@ -1,4 +1,4 @@
-use crate::visible::Visible;
+use crate::visible::{Creature, Direction, Visible};
 
 pub struct Player {
     pub height: u32,
@@ -25,5 +25,15 @@ impl Visible for Player {
 
     fn in_origin(&self) -> bool {
         self.x == 0 && self.y == 0
+    }
+}
+
+impl Creature for Player {
+    fn position(&self) -> (i32, i32) {
+        (self.x as i32, self.y as i32)
+    }
+
+    fn facing(&self) -> Direction {
+        Direction::North
     }
 }
