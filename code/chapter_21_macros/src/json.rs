@@ -1,4 +1,3 @@
-#[macro_use]
 use std::collections::HashMap;
 
 #[derive(Clone, PartialEq, Debug)]
@@ -8,7 +7,7 @@ pub enum Json {
     Number(f64),
     String(String),
     Array(Vec<Json>),
-    Object(Box<HashMap<String, Json>>)
+    Object(Box<HashMap<String, Json>>),
 }
 
 impl From<bool> for Json {
@@ -52,15 +51,16 @@ macro_rules! json{
          Json::Array(vec![ $( json!($element) ),* ])
      };
     ({ $( $key:tt : $value:tt ),* }) =>  {
-        Json::Object(Box::new(vec![
-            $( ($key.to_string(), json!($value)) ),*
-        ].into_iter().collect()))
+        {
+            let mut fields = Box::new(::std::collections::HashMap::new());
+            $( fields.insert($key.to_string(), json!($value)); )*
+            Json::Object(fields)
+        }
     };
     ( $other:tt ) => {
       Json::from($other)
     };
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -78,11 +78,11 @@ mod tests {
                 }
             ]
         );
-        let hand_coded_value = Json::Array(vec![
-            Json::Object(Box::new(vec![
-                ("pitch".to_string(), Json::Number(440.0))
-            ].into_iter().collect()))
-        ]);
+        let hand_coded_value = Json::Array(vec![Json::Object(Box::new(
+            vec![("pitch".to_string(), Json::Number(440.0))]
+                .into_iter()
+                .collect(),
+        ))]);
         assert_eq!(macro_generated_value, hand_coded_value);
     }
 }
